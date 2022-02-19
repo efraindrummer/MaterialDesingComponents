@@ -84,6 +84,62 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_padding_min"
+            android:layout_marginStart="@dimen/common_padding_min"
+            android:layout_marginEnd="@dimen/common_padding_min">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgCover"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/card_img_cover_height"
+                    android:importantForAccessibility="no"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/design_default_color_secondary"/>
+
+                <TextView
+                    android:id="@+id/tVTitleAlt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_title"
+                    android:textAppearance="?attr/textAppearanceHeadline5"
+                    android:layout_margin="@dimen/common_padding_default"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/imgCover"/>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/card_input_url"
+                    android:layout_marginTop="@dimen/common_padding_default"
+                    app:helperText="@string/card_required"
+                    app:endIconMode="clear_text"
+                    app:layout_constraintStart_toStartOf="@id/tVTitleAlt"
+                    app:layout_constraintEnd_toEndOf="@id/tVTitleAlt"
+                    app:layout_constraintTop_toBottomOf="@id/tVTitleAlt"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etUrl"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textUri"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>
