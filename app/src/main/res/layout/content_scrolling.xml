@@ -19,6 +19,7 @@
             android:layout_marginTop="@dimen/common_padding_min"
             android:layout_marginStart="@dimen/common_padding_min"
             android:layout_marginEnd="@dimen/common_padding_min"
+            android:visibility="visible"
             android:clickable="true"
             android:focusable="true">
 
@@ -103,7 +104,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:background="@color/design_default_color_secondary"/>
+                    android:background="@color/design_default_color_secondary"
+                    android:visibility="visible"/>
 
                 <TextView
                     android:id="@+id/tVTitleAlt"
@@ -163,6 +165,72 @@
                     app:layout_constraintStart_toStartOf="@id/tVTitleAlt"
                     app:layout_constraintTop_toBottomOf="@id/tilPassword"
                     android:layout_marginTop="@dimen/common_padding_default"/>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/color_divider"
+                    app:layout_constraintStart_toStartOf="@id/tVTitleAlt"
+                    app:layout_constraintEnd_toEndOf="@+id/tVTitleAlt"
+                    app:layout_constraintTop_toBottomOf="@id/cbEnablePass"
+                    android:layout_marginTop="@dimen/common_padding_middle"/>
+                
+                <TextView
+                    android:id="@+id/tvSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/card_title"
+                    android:textAppearance="?attr/textAppearanceSubtitle1"
+                    android:layout_marginTop="@dimen/common_padding_middle"
+                    app:layout_constraintStart_toStartOf="@+id/tVTitleAlt"
+                    app:layout_constraintEnd_toEndOf="@id/tVTitleAlt"
+                    app:layout_constraintTop_toBottomOf="@id/divider"/>
+
+                <TextView
+                    android:id="@+id/tvMessageAlt"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/large_text"
+                    android:textAppearance="?attr/textAppearanceBody1"
+                    android:maxLines="5"
+                    android:ellipsize="end"
+                    android:layout_marginTop="@dimen/common_padding_default"
+                    app:layout_constraintStart_toStartOf="@+id/tVTitleAlt"
+                    app:layout_constraintEnd_toEndOf="@id/tVTitleAlt"
+                    app:layout_constraintTop_toBottomOf="@id/tvSubtitle"/>
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/toggle_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/common_padding_default"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvMessageAlt">
+
+                    <Button
+                        android:id="@+id/btnRed"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_toogle_red"
+                        style="?attr/materialButtonOutlinedStyle"/>
+
+                    <Button
+                        android:id="@+id/btnBlue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_toogle_blue"
+                        style="?attr/materialButtonOutlinedStyle"/>
+
+                    <Button
+                        android:id="@+id/btnGreen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/card_toogle_green"
+                        style="?attr/materialButtonOutlinedStyle"/>
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
