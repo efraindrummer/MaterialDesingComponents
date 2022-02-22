@@ -8,6 +8,7 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.example.mdc.databinding.ActivityScrollingBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 
@@ -36,6 +37,16 @@ class ScrollingActivity : AppCompatActivity() {
             } else {
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
             }
+        }
+
+        binding.bottomAppBar.setNavigationOnClickListener({
+            Snackbar.make(binding.root, R.string.message_action_success, Snackbar.LENGTH_LONG)
+                .setAnchorView(binding.fab)
+                .show()
+        })
+
+        binding.content.btnSkip.setOnClickListener {
+            binding.content.cvAd.visibility = View.GONE
         }
     }
 
