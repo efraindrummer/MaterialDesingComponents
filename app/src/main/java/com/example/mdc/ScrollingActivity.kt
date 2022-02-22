@@ -10,6 +10,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.mdc.databinding.ActivityScrollingBinding
 import com.google.android.material.bottomappbar.BottomAppBar
 
@@ -56,6 +58,12 @@ class ScrollingActivity : AppCompatActivity() {
                     })
                     .show()
         }
+
+        Glide.with(this)
+                .load("https://www.redeszone.net/app/uploads-redeszone.net/2016/07/Hacker-Anonymous-wants-you.png?x=480&y=375&quality=40")
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .into(binding.content.imgCover)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
