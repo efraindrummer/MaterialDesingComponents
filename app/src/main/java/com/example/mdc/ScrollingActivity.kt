@@ -69,6 +69,18 @@ class ScrollingActivity : AppCompatActivity() {
             //adquiere el avlor contrario para el chexckbox
             binding.content.tilPassword.isEnabled = !binding.content.tilPassword.isEnabled
         }
+
+        binding.content.etUrl.onFocusChangeListener = View.OnFocusChangeListener { view, focused ->
+            if(!focused){
+                Snackbar.make(binding.root, "Foco perdido", Snackbar.LENGTH_SHORT)
+                        .setAnchorView(binding.content.tilUrl)
+                        .show()
+            }else{
+                Snackbar.make(binding.root, "Foco", Snackbar.LENGTH_SHORT)
+                        .setAnchorView(binding.content.tilUrl)
+                        .show()
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
