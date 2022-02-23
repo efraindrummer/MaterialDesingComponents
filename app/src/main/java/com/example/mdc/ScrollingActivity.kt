@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.webkit.URLUtil
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -67,11 +68,20 @@ class ScrollingActivity : AppCompatActivity() {
         }
 
         binding.content.etUrl.onFocusChangeListener = View.OnFocusChangeListener { view, focused ->
+            var errorStr: String? = null
             var url = binding.content.etUrl.text.toString()
 
             if(!focused){
-                loadImage(url)
+                if (url.isEmpty()){
+                    errorStr = getString(R.string.card_required)
+                }else if(URLUtil.isValidUrl(url)){
+                    loadImage(url)
+                }else{
+                    errorStr = getString(R.string.card_invalid_url)
+                }
             }
+
+            binding.content.tilUrl.error = errorStr
         }
     }
 
