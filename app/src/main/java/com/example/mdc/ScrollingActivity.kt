@@ -1,9 +1,7 @@
 package com.example.mdc
 
+import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
@@ -43,20 +41,20 @@ class ScrollingActivity : AppCompatActivity() {
             }
         }
 
-        binding.bottomAppBar.setNavigationOnClickListener({
+        binding.bottomAppBar.setNavigationOnClickListener {
             Snackbar.make(binding.root, R.string.message_action_success, Snackbar.LENGTH_LONG)
                 .setAnchorView(binding.fab)
                 .show()
-        })
+        }
 
         binding.content.btnSkip.setOnClickListener { binding.content.cvAd.visibility = View.GONE }
 
         binding.content.btnBuy.setOnClickListener {
             Snackbar.make(it, R.string.card_buying, Snackbar.LENGTH_LONG)
                     .setAnchorView(binding.fab)
-                    .setAction(R.string.card_to_go, {
+                    .setAction(R.string.card_to_go) {
                         Toast.makeText(this, R.string.card_historial, Toast.LENGTH_SHORT).show()
-                    })
+                    }
                     .show()
         }
 
@@ -67,21 +65,35 @@ class ScrollingActivity : AppCompatActivity() {
             binding.content.tilPassword.isEnabled = !binding.content.tilPassword.isEnabled
         }
 
-        binding.content.etUrl.onFocusChangeListener = View.OnFocusChangeListener { view, focused ->
+        binding.content.etUrl.onFocusChangeListener = View.OnFocusChangeListener { _, focused ->
             var errorStr: String? = null
             var url = binding.content.etUrl.text.toString()
 
             if(!focused){
-                if (url.isEmpty()){
-                    errorStr = getString(R.string.card_required)
-                }else if(URLUtil.isValidUrl(url)){
-                    loadImage(url)
-                }else{
-                    errorStr = getString(R.string.card_invalid_url)
+                when {
+                    url.isEmpty() -> {
+                        errorStr = getString(R.string.card_required)
+                    }
+                    URLUtil.isValidUrl(url) -> {
+                        loadImage(url)
+                    }
+                    else -> {
+                        errorStr = getString(R.string.card_invalid_url)
+                    }
                 }
             }
 
             binding.content.tilUrl.error = errorStr
+        }
+
+        binding.content.toggleButton.addOnButtonCheckedListener { _, checkedId, _ ->
+            binding.content.root.setBackgroundColor(
+                    when(checkedId){
+                        R.id.btnRed -> Color.RED
+                        R.id.btnBlue -> Color.BLUE
+                        else -> Color.GREEN
+                    }
+            )
         }
     }
 
