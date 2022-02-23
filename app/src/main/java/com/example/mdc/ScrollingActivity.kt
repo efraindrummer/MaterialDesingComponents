@@ -59,11 +59,7 @@ class ScrollingActivity : AppCompatActivity() {
                     .show()
         }
 
-        Glide.with(this)
-                .load("https://www.redeszone.net/app/uploads-redeszone.net/2016/07/Hacker-Anonymous-wants-you.png?x=480&y=375&quality=40")
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .centerCrop()
-                .into(binding.content.imgCover)
+        loadImage()
 
         binding.content.cbEnablePass.setOnClickListener {
             //adquiere el avlor contrario para el chexckbox
@@ -71,16 +67,20 @@ class ScrollingActivity : AppCompatActivity() {
         }
 
         binding.content.etUrl.onFocusChangeListener = View.OnFocusChangeListener { view, focused ->
+            var url = binding.content.etUrl.text.toString()
+
             if(!focused){
-                Snackbar.make(binding.root, "Foco perdido", Snackbar.LENGTH_SHORT)
-                        .setAnchorView(binding.content.tilUrl)
-                        .show()
-            }else{
-                Snackbar.make(binding.root, "Foco", Snackbar.LENGTH_SHORT)
-                        .setAnchorView(binding.content.tilUrl)
-                        .show()
+                loadImage(url)
             }
         }
+    }
+
+    private fun loadImage(url: String = "https://www.redeszone.net/app/uploads-redeszone.net/2016/07/Hacker-Anonymous-wants-you.png?x=480&y=375&quality=40"){
+        Glide.with(this)
+                .load(url)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .centerCrop()
+                .into(binding.content.imgCover)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
